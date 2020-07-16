@@ -14,6 +14,7 @@ curl -L https://raw.githubusercontent.com/JustinKnueppel/Dev-Environments/master
 
 Currently supported environments:
 
+* Dotnet 5.0 - dotnet
 * Golang - go
 * Node.js - node
 * Python - python

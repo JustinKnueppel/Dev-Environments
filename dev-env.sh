@@ -16,7 +16,7 @@ environments=(
   go
   node
   rust
-  deno
+  dotnet
 )
 
 function print_environments {
