@@ -16,6 +16,7 @@ environments=(
   go
   node
   rust
+  deno
 )
 
 function print_environments {
@@ -41,6 +42,8 @@ if ! valid_environment $environment;then
   exit 1
 fi
 
+dir="$dev_dir/$environment"
+
 # Ensure path does not contain a file
 path=$2
 if [ -f $path ]; then
@@ -56,4 +59,4 @@ fi
 
 # Copy .devcontainer directory to target directory
 echo "Copying $environment environment to $path"
-cp -r "$environment/.devcontainer" "$path"
+cp -r "$dir/.devcontainer" "$path"
