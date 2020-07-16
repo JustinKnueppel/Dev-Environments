@@ -11,24 +11,33 @@ if [ $# -ne 2 ]; then
   exit 1
 fi
 
-# Map language to directory
-language=$1
-dir=""
-case $language in
-  python)
-  dir="$dev_dir/python"
-  ;;
-  go)
-  dir="$dev_dir/go"
-  ;;
-  node)
-  dir="$dev_dir/node"
-  ;;
-esac
+environments=(
+  python
+  go
+  node
+  rust
+)
 
-# Fail early if bad language
-if [ -z "$dir" ];then
-  echo "Environment does not exist"
+function print_environments {
+  echo "Valid environments:"
+  for environment in "${environments[@]}"; do
+    echo -e "\t$environment"
+  done
+}
+
+function valid_environment {
+  for env in "${environments[@]}";do
+    if [ $env = $1 ];then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# Check valid environment
+environment=$1
+if ! valid_environment $environment;then
+  echo "Invalid environment $environment"
   exit 1
 fi
 
@@ -46,5 +55,5 @@ if [ ! -d $path ]; then
 fi
 
 # Copy .devcontainer directory to target directory
-echo "Copying $language environment to $path"
-cp -r "$dir/.devcontainer" "$path"
+echo "Copying $environment environment to $path"
+cp -r "$environment/.devcontainer" "$path"
