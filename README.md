@@ -14,6 +14,7 @@ curl -L https://raw.githubusercontent.com/JustinKnueppel/Dev-Environments/master
 
 Currently supported environments:
 
-* Python - python
-* Node.js - node
 * Golang - go
+* Node.js - node
+* Python - python
+* Rust - rust
